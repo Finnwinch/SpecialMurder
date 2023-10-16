@@ -1,6 +1,7 @@
 return function(data)
     local Interface_NEW = include("certif/interface/layout/new.lua")
     local Interface_BOX = include("certif/interface/container/config.lua")
+    include("certif/interface/color.lua")
     local DFrame = vgui.Create("DFrame")
         DFrame:SetTitle("")
         DFrame:SetSize(ScrW()*0.6,ScrH()*0.6)
@@ -13,14 +14,14 @@ return function(data)
         Interface:SetParent(DFrame)
         Interface:Dock(FILL)
         function Interface:Paint(w,h) 
-            draw.RoundedBoxEx(25,0,0,w,h,Color(26,32,44),true,true,true,true)
+            draw.RoundedBoxEx(25,0,0,w,h,BleuFonce,true,true,true,true)
         end
     local Header = vgui.Create("DPanel")
         Header:SetParent(Interface)
         Header:Dock(TOP)
         Header:SetTall(50)
         function Header:Paint(w,h) 
-            draw.RoundedBoxEx(25,0,0,w,h,Color(18,18,18),true,true,false,false) 
+            draw.RoundedBoxEx(25,0,0,w,h,Noir,true,true,false,false) 
         end
     local left = vgui.Create("DPanel")
         left:SetParent(Header) ; left:Dock(LEFT)
@@ -39,7 +40,7 @@ return function(data)
         right:SetWide(50)
         right:SetText("")
         function right:Paint(w,h)
-            draw.RoundedBoxEx(25,0,0,w,h,Color(161,57,35),false,true,false,false)
+            draw.RoundedBoxEx(25,0,0,w,h,RougePale,false,true,false,false)
             draw.SimpleText("X","close-button",w/2,h/2,Color(255,255,255),TEXT_ALIGN_CENTER,TEXT_ALIGN_CENTER)
         end
         function right:DoClick() DFrame:Remove() end
@@ -50,7 +51,7 @@ return function(data)
         Footer:SetTall(30)
         Footer:SetText("")
         function Footer:Paint(w,h)
-            draw.RoundedBoxEx(25,0,0,w,h,Color(42,186,113),true,true,true,true)
+            draw.RoundedBoxEx(25,0,0,w,h,VertPale),true,true,true,true)
             draw.SimpleText("Nouveau","new-button",w/2,h/2,Color(255,255,255),TEXT_ALIGN_CENTER,TEXT_ALIGN_CENTER)
         end
         function Footer:DoClick()
@@ -62,7 +63,7 @@ return function(data)
     Article:Dock(FILL)
     Article:DockMargin(0,15,0,30)
     local vbar = Article:GetVBar() ; vbar:SetWide(5) ; vbar:SetHideButtons(true)
-    function vbar:Paint(w, h) draw.RoundedBox(0, 0, 0, w, h, Color(29, 47, 73)) end
+    function vbar:Paint(w, h) draw.RoundedBox(0, 0, 0, w, h, BleuFonce) end
     if ( not data ) then return end
     for i = 1, #data do
         local map = data[i].MAP

@@ -1,11 +1,12 @@
 return function(scrollPanel)
+    include("certif/interface/color.lua")
     ModelsInput = include("certif/util/interface/ModelsInput.lua")
     local Backgrounnd = vgui.Create("DPanel",scrollPanel)
         Backgrounnd:Dock(TOP)
         Backgrounnd:DockMargin(25,10,25,0)
         Backgrounnd:SetTall(30)
         function Backgrounnd:Paint(w,h) 
-            draw.RoundedBoxEx(12,0,0,w,h,Color(26,39,58),true,true,true,true) 
+            draw.RoundedBoxEx(12,0,0,w,h,BleuFonce,true,true,true,true) 
         end
     local Element = vgui.Create("DTextEntry", Backgrounnd)
         Element:Dock(FILL)

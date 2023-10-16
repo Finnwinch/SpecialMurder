@@ -27,7 +27,7 @@ if SERVER then
     include("certif/events/post_gamemode.lua") // change model of weapons pairs map
 
     AddCSLuaFile("certif/interface/font.lua") // download font
-
+    AddCSLuaFile("certif/interface/color.lua") // download color cache
     AddCSLuaFile("certif/util/interface/BoxInput.lua") // download components part
     AddCSLuaFile("certif/util/interface/ModelsInput.lua") // download components part
     AddCSLuaFile("certif/interface/container/config.lua") // download components part

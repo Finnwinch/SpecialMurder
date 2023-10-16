@@ -1,4 +1,5 @@
 return function(PARENT,MESSAGE,font,no_margin)
+    include("certif/interface/color.lua")
     local Background = vgui.Create("DPanel",PARENT)
     Background:Dock(TOP)
     if (not no_margin) then
@@ -6,7 +7,7 @@ return function(PARENT,MESSAGE,font,no_margin)
         Background:SetTall(30)
     end
     function Background:Paint(w,h)
-        draw.RoundedBoxEx(12,0,0,w,h,Color(26,39,58),true,true,true,true)
+        draw.RoundedBoxEx(12,0,0,w,h,BleuFonce,true,true,true,true)
     end
     local Element = vgui.Create("DTextEntry",Background)
     Element:Dock(FILL)

@@ -1,4 +1,5 @@
 return function(map,vg,vk,wg,wk,p)
+    include("certif/interface/color.lua")
     local mode_edit,pointeur,CurrentModel,countModels,Attribute = false, 1, p[1].PLAYERMODEL, 0,{}
     for _,v in ipairs(p) do
         if (v.SELECTED == tostring(1)) then
@@ -14,7 +15,7 @@ return function(map,vg,vk,wg,wk,p)
         box:SetTall(120)
         box:DockMargin(25,5,25,5)
         function box:Paint(w,h)
-            draw.RoundedBoxEx(8,0,0,w,h,Color(29,47,73),true,true,true,true)
+            draw.RoundedBoxEx(8,0,0,w,h,BleuFonce,true,true,true,true)
         end
         function box:Think()
             net.Receive("EditModeCall",function()
@@ -38,10 +39,10 @@ return function(map,vg,vk,wg,wk,p)
         select:DockMargin(5,13.5,5,13.5)
         function select:Paint(w,h)
             if ( self:IsHovered()  ) then
-                barColor = Color(16,192,104)
-                txtColor = Color(197,231,255)
+                barColor = VertFonce
+                txtColor = BleuCiel
             else
-                barColor = Color(42,186,113)
+                barColor = VertPale
                 txtColor = Color(255,255,255)
             end
             draw.RoundedBoxEx(6,0,0,w,h,barColor,true,true,true,true)
@@ -58,13 +59,13 @@ return function(map,vg,vk,wg,wk,p)
         edit:DockMargin(5,0,5,0)
         function edit:Paint(w,h)
             if ( self:IsHovered()  ) then
-                barColor = Color(227,203,51)
-                txtColor = Color(197,231,255)
+                barColor = JauneFonce
+                txtColor = BleuCiel
             else
-                barColor = Color(222,203,81)
+                barColor = JaunePale
                 txtColor = Color(255,255,255)
             end
-            if (mode_edit) then barColor = Color(222,173,81) end
+            if (mode_edit) then barColor = JauneSelected end
             draw.RoundedBoxEx(6,0,0,w,h,barColor,true,true,true,true)
             draw.SimpleText("Edition","manage-button",w/2,h/2,txtColor,TEXT_ALIGN_CENTER,TEXT_ALIGN_CENTER)
         end
@@ -82,10 +83,10 @@ return function(map,vg,vk,wg,wk,p)
         del:DockMargin(5,13.5,5,13.5)
         function del:Paint(w,h)
             if ( self:IsHovered()  ) then
-                barColor = Color(185,24,24)
-                txtColor = Color(197,231,255)
+                barColor = RougeFonce
+                txtColor = BleuCiel
             else
-                barColor = Color(184,56,56)
+                barColor = RougePale
                 txtColor = Color(255,255,255)
             end
             draw.RoundedBoxEx(6,0,0,w,h,barColor,true,true,true,true)
@@ -105,13 +106,13 @@ return function(map,vg,vk,wg,wk,p)
         label_Gun:Dock(TOP)
         label_Gun:DockMargin(80,13.5,80,13.5)
         function label_Gun:Paint(w,h)
-            draw.RoundedBoxEx(8,0,0,w,h,Color(25,31,43),true,true,true,true)
+            draw.RoundedBoxEx(8,0,0,w,h,BleuFonce,true,true,true,true)
             draw.SimpleText("Pistolet","title-attributes-label",w/2,h/2,Color(255,255,255),TEXT_ALIGN_CENTER,TEXT_ALIGN_CENTER)
         end
     local view_Gun = vgui.Create("DPanel",section_Gun)
         view_Gun:Dock(TOP)
         view_Gun:DockMargin(5,0,5,0)
-        function view_Gun:Paint(w,h) draw.RoundedBoxEx(8,0,0,w,h,Color(25,31,43),true,true,true,true) end
+        function view_Gun:Paint(w,h) draw.RoundedBoxEx(8,0,0,w,h,BleuFonce,true,true,true,true) end
         Tvg = BoxInput(view_Gun,vg || "ViewGun models","data-attributes-label",true)
         function view_Gun:Think()
             self:SetMouseInputEnabled(mode_edit)
@@ -125,7 +126,7 @@ return function(map,vg,vk,wg,wk,p)
     local world_Gun = vgui.Create("DPanel",section_Gun)
         world_Gun:Dock(TOP)
         world_Gun:DockMargin(5,13.5,5,13.5)
-        function world_Gun:Paint(w,h) draw.RoundedBoxEx(8,0,0,w,h,Color(25,31,43),true,true,true,true) end
+        function world_Gun:Paint(w,h) draw.RoundedBoxEx(8,0,0,w,h,BleuFonce,true,true,true,true) end
         Twg = BoxInput(world_Gun,wg || "WorldGun models","data-attributes-label",true)
         function world_Gun:Think()
             self:SetMouseInputEnabled(mode_edit)
@@ -144,7 +145,7 @@ return function(map,vg,vk,wg,wk,p)
     local view_Couteau = vgui.Create("DPanel",section_Couteau)
         view_Couteau:Dock(TOP)
         view_Couteau:DockMargin(5,0,5,0)
-        function view_Couteau:Paint(w,h) draw.RoundedBoxEx(8,0,0,w,h,Color(25,31,43),true,true,true,true) end
+        function view_Couteau:Paint(w,h) draw.RoundedBoxEx(8,0,0,w,h,BleuFonce,true,true,true,true) end
         Tvk = BoxInput(view_Couteau,vk || "ViewKnif models","data-attributes-label",true)
         function view_Couteau:Think()
             self:SetMouseInputEnabled(mode_edit)
@@ -152,7 +153,7 @@ return function(map,vg,vk,wg,wk,p)
     local world_Couteau = vgui.Create("DPanel",section_Couteau)
         world_Couteau:Dock(TOP)
         world_Couteau:DockMargin(5,13.5,5,13.5)
-        function world_Couteau:Paint(w,h) draw.RoundedBoxEx(8,0,0,w,h,Color(25,31,43),true,true,true,true) end
+        function world_Couteau:Paint(w,h) draw.RoundedBoxEx(8,0,0,w,h,BleuFonce,true,true,true,true) end
         Twk = BoxInput(world_Couteau,wk || "WorldKnif models","data-attributes-label",true)
         function world_Couteau:Think()
             self:SetMouseInputEnabled(mode_edit)
@@ -164,7 +165,7 @@ return function(map,vg,vk,wg,wk,p)
     local management = vgui.Create("DPanel",section_Models)
         management:Dock(BOTTOM)
         management:DockMargin(5,2,5,7)
-        function management:Paint(w,h) draw.RoundedBoxEx(8,0,0,w,h,Color(26,39,58),true,true,true,true) end
+        function management:Paint(w,h) draw.RoundedBoxEx(8,0,0,w,h,BleuFonce,true,true,true,true) end
     local precedent = vgui.Create("DButton",management)
         precedent:Dock(LEFT)
         precedent:DockMargin(0,0,5,0)
@@ -172,10 +173,10 @@ return function(map,vg,vk,wg,wk,p)
         precedent:SetText("")
         function precedent:Paint(w,h)
             if (self:IsHovered()) then
-                barColor = Color(25,31,43)
-                txtColor = Color(197,231,255)
+                barColor = BleuFonce
+                txtColor = BleuCiel
             else
-                barColor = Color(27,59,104)
+                barColor = BleuPale
                 txtColor = Color(255,255,255)
             end
             draw.RoundedBox(5,0,0,w,h,barColor)
@@ -193,10 +194,10 @@ return function(map,vg,vk,wg,wk,p)
         prochain:SetText("")
         function prochain:Paint(w,h)
             if (self:IsHovered()) then
-                barColor = Color(25,31,43)
-                txtColor = Color(197,231,255)
+                barColor = BleuFonce
+                txtColor = BleuCiel
             else
-                barColor = Color(27,59,104)
+                barColor = BleuPale
                 txtColor = Color(255,255,255)
             end
             draw.RoundedBox(5,0,0,w,h,barColor)
@@ -212,7 +213,7 @@ return function(map,vg,vk,wg,wk,p)
         selection:SetWide(25)
         selection:SetText("")
         function selection:Paint(w,h)
-            draw.RoundedBox(5,0,0,w,h,Color(10,10,10))
+            draw.RoundedBox(5,0,0,w,h,Noir)
         end
         function selection:Think()
             self:SetMouseInputEnabled(mode_edit)
@@ -245,9 +246,9 @@ return function(map,vg,vk,wg,wk,p)
         visualisation.Entity:SetEyeTarget(headpos-Vector(-15, 0, 0))
         function visualisation:Think()
             if (p[pointeur].SELECTED == tostring(1)) then
-                function selection:Paint(w,h) draw.RoundedBox(12,0,0,w,h,Color(183,56,56)) ; draw.SimpleText("Retirer","default", w/2,h/2-1,Color(255,255,255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER) end
+                function selection:Paint(w,h) draw.RoundedBox(12,0,0,w,h,RougeFonce) ; draw.SimpleText("Retirer","default", w/2,h/2-1,Color(255,255,255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER) end
             else
-                function selection:Paint(w,h) draw.RoundedBox(12,0,0,w,h,Color(41,186,112)) ; draw.SimpleText("Valider","default", w/2,h/2-1,Color(255,255,255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER) end
+                function selection:Paint(w,h) draw.RoundedBox(12,0,0,w,h,VertFonce) ; draw.SimpleText("Valider","default", w/2,h/2-1,Color(255,255,255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER) end
             end
             self:SetModel(CurrentModel)
             playermodels_data = p
@@ -261,7 +262,7 @@ return function(map,vg,vk,wg,wk,p)
         config:DockMargin(5,13.5,5,13.5)
         config:SetWide(200)
         function config:Paint(w,h)
-            draw.RoundedBox(0,0,0,w,h,Color(35,41,57))
+            draw.RoundedBox(0,0,0,w,h,BleuFonce)
             draw.SimpleText(map,"default",w/2,h/2,Color(255,255,255),TEXT_ALIGN_CENTER,TEXT_ALIGN_CENTER)
         end
     models_count = vgui.Create("DLabel",section_Index)
