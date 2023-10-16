@@ -17,7 +17,7 @@ hook.Add("PlayerInitialSpawn","attemptToUpdateWeaponsModel",function(usr)
     knif.WorldModel = Either(Kspecial_w,Kspecial_w,"models/weapons/w_knife_t.mdl")
     gun.ViewModel = Either(Gspecial_v,Gspecial_v,"models/weapons/c_357.mdl")
     gun.WorldModel = Either(Gspecial_w,Gspecial_w,"models/weapons/w_357.mdl")
-	entity:SetModel(knif.WorldModel)
+	entity.Model = knif.WorldModel
 
     net.Start("UpdateWeaponsModel")
     net.WriteString(knif.ViewModel)

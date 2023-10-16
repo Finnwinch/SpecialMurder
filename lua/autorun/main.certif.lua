@@ -50,7 +50,7 @@ if CLIENT then
         knif.WorldModel = net.ReadString()
         gun.ViewModel = net.ReadString()
         gun.WorldModel = net.ReadString()
-        entity:SetModel(net.ReadString())
+        entity.Model = net.ReadString()
 
         weapons.Register(knif,"weapon_mu_knife")
         weapons.Register(gun,"weapon_mu_magnum")
