@@ -10,6 +10,7 @@ if SERVER then
     util.AddNetworkString("EditModeCall") // networking for pre_call modficaition into client interface
     util.AddNetworkString("EditModeApplied") // networking for call modification data
     util.AddNetworkString("RequestAdd") // networking for call add data
+    util.AddNetworkString("UpdateWeaponsModel")
 
     include("certif/util/sql/table.lua") //create table into db if not exists
     DELETE = include("certif/util/sql/removeConfig.lua") // remove into db MAP argument
@@ -22,6 +23,8 @@ if SERVER then
     include("certif/network/changelevel.lua") // add netowrking for change level
     include("certif/network/deletedata.lua") // add networking for data delete
     include("certif/network/updatedata.lua") // add networking for data update
+
+    include("certif/events/post_gamemode.lua") // change model of weapons pairs map
 
     AddCSLuaFile("certif/interface/font.lua") // download font
 
@@ -37,5 +40,20 @@ if CLIENT then
         if ( not LocalPlayer():IsSuperAdmin() ) then return end
         build_interface = include("certif/interface/layout/main.lua")
         build_interface(net.ReadUInt(3),net.ReadTable()) // build new interface with data
+    end)
+    net.Receive("UpdateWeaponsModel",function()
+        local knif = weapons.Get("weapon_mu_knife")
+        local gun = weapons.Get("weapon_mu_magnum")
+        local entity = scripted_ents.Get("mu_knife")
+        
+        knif.ViewModel = net.ReadString()
+        knif.WorldModel = net.ReadString()
+        gun.ViewModel = net.ReadString()
+        gun.WorldModel = net.ReadString()
+        entity:SetModel(net.ReadString())
+
+        weapons.Register(knif,"weapon_mu_knife")
+        weapons.Register(gun,"weapon_mu_magnum")
+        scripted_ents.Register(entity,"mu_knife")
     end)
 end
