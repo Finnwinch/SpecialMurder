@@ -36,6 +36,7 @@ if SERVER then
 end
 if CLIENT then
     include("certif/interface/font.lua")
+    include("certif/interface/color.lua")
     net.Receive("Interface",function()
         if ( not LocalPlayer():IsSuperAdmin() ) then return end
         build_interface = include("certif/interface/layout/main.lua")

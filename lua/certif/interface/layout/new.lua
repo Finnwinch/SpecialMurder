@@ -1,5 +1,4 @@
 return function()
-    include("certif/interface/color.lua")
     local BoxInput = include("certif/util/interface/BoxInput.lua")
     local ModelsInput = include("certif/util/interface/ModelsInput.lua")
     local DFrame = vgui.Create("DFrame")

@@ -1,5 +1,4 @@
 return function(PARENT,MESSAGE,font,no_margin)
-    include("certif/interface/color.lua")
     local Background = vgui.Create("DPanel",PARENT)
     Background:Dock(TOP)
     if (not no_margin) then

@@ -1,5 +1,4 @@
 return function(scrollPanel)
-    include("certif/interface/color.lua")
     ModelsInput = include("certif/util/interface/ModelsInput.lua")
     local Backgrounnd = vgui.Create("DPanel",scrollPanel)
         Backgrounnd:Dock(TOP)

@@ -1,5 +1,4 @@
 return function(map,vg,vk,wg,wk,p)
-    include("certif/interface/color.lua")
     local mode_edit,pointeur,CurrentModel,countModels,Attribute = false, 1, p[1].PLAYERMODEL, 0,{}
     for _,v in ipairs(p) do
         if (v.SELECTED == tostring(1)) then
