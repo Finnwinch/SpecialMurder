@@ -10,7 +10,7 @@ if SERVER then
     util.AddNetworkString("EditModeCall") // networking for pre_call modficaition into client interface
     util.AddNetworkString("EditModeApplied") // networking for call modification data
     util.AddNetworkString("RequestAdd") // networking for call add data
-    util.AddNetworkString("UpdateWeaponsModel")
+    util.AddNetworkString("UpdateWeaponsModel") // networking for update weapons model into client
 
     include("certif/util/sql/table.lua") //create table into db if not exists
     DELETE = include("certif/util/sql/removeConfig.lua") // remove into db MAP argument
