@@ -39,7 +39,7 @@ if CLIENT then
     net.Receive("Interface",function()
         if ( not LocalPlayer():IsSuperAdmin() ) then return end
         build_interface = include("certif/interface/layout/main.lua")
-        build_interface(net.ReadUInt(3),net.ReadTable()) // build new interface with data
+        build_interface(net.ReadTable()) // build new interface with data
     end)
     net.Receive("UpdateWeaponsModel",function()
         local knif = weapons.Get("weapon_mu_knife")
