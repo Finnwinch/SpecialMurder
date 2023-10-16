@@ -1,4 +1,4 @@
-return function(nbConfig,data)
+return function(data)
     local Interface_NEW = include("certif/interface/layout/new.lua")
     local Interface_BOX = include("certif/interface/container/config.lua")
     local DFrame = vgui.Create("DFrame")
@@ -7,10 +7,7 @@ return function(nbConfig,data)
         DFrame:Center()
         DFrame:MakePopup()
         DFrame:SetDraggable(false)
-        DFrame:ShowCloseButton(true)
-        //DFrame.btnClose:SetVisible( false )
-	    //DFrame.btnMaxim:SetVisible( false )
-	    //DFrame.btnMinim:SetVisible( false )
+        DFrame:ShowCloseButton(false)
         function DFrame:Paint() end
     local Interface = vgui.Create("DPanel")
         Interface:SetParent(DFrame)
@@ -67,7 +64,7 @@ return function(nbConfig,data)
     local vbar = Article:GetVBar() ; vbar:SetWide(5) ; vbar:SetHideButtons(true)
     function vbar:Paint(w, h) draw.RoundedBox(0, 0, 0, w, h, Color(29, 47, 73)) end
     if ( not data ) then return end
-    for i = 1, nbConfig do
+    for i = 1, #data do
         local map = data[i].MAP
         MapBox = map
         local vg = data[i].VIEWMODEL_GUN
