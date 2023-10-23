@@ -27,7 +27,7 @@ if SERVER then
     include("certif/events/post_gamemode.lua") // change model of weapons pairs map
 
     AddCSLuaFile("certif/interface/font.lua") // download font
-
+    AddCSLuaFile("certif/interface/color.lua") // download color cache
     AddCSLuaFile("certif/util/interface/BoxInput.lua") // download components part
     AddCSLuaFile("certif/util/interface/ModelsInput.lua") // download components part
     AddCSLuaFile("certif/interface/container/config.lua") // download components part
@@ -36,6 +36,7 @@ if SERVER then
 end
 if CLIENT then
     include("certif/interface/font.lua")
+    include("certif/interface/color.lua")
     net.Receive("Interface",function()
         if ( not LocalPlayer():IsSuperAdmin() ) then return end
         build_interface = include("certif/interface/layout/main.lua")
